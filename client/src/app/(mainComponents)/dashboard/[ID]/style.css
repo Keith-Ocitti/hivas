@@ -1,0 +1,440 @@
+:root {
+  --blue: rgb(82, 82, 252);
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* background-color: rgb(183, 181, 181); */
+  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+}
+body {
+  background-color: whitesmoke;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  border-bottom: 1px rgb(199, 197, 197) solid;
+  /* background-color: red; */
+}
+
+.logo {
+  display: flex;
+  background-color: white;
+  height: 70px;
+  margin-left: 10px;
+  /* padding-top: 10px; */
+}
+.logo > button {
+  border: none;
+  background-color: white;
+}
+.logo > p {
+  font-weight: bold;
+  color: var(--blue);
+  font-size: 25px;
+  background-color: white;
+  margin-top: 20px;
+}
+.greeting-div {
+  font-size: 28px;
+  height: 70px;
+  display: inline-flex;
+  background-color: white;
+}
+.date {
+  color: grey;
+  margin-left: 20px;
+  font-weight: lighter;
+}
+.greeting-div > p {
+  margin-top: 22px;
+}
+.search-div {
+  display: flex;
+  background-color: rgb(230, 229, 229);
+  align-items: center;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 7px;
+  border-radius: 30px;
+  margin-right: 10px;
+}
+.search-div > input {
+  width: 300px;
+  height: 25px;
+  outline: 0;
+  border: none;
+  background-color: rgb(230, 229, 229);
+}
+.search-div > button {
+  padding: 5px;
+  border-radius: 50%;
+  border: 2px white solid;
+  outline: 0;
+  background-color: white;
+}
+.search-div > button:hover {
+  border: 2px var(--blue) solid;
+  cursor: pointer;
+}
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.sidebar {
+  width: 20%;
+  /* border-right: 1px grey solid; */
+  /* height: 600px; */
+  /* background-color: red; */
+}
+.sideBar-container {
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+  background-color: white;
+}
+.sideBar-container > button {
+  padding-top: 10px;
+  padding-bottom: 8px;
+  text-align: left;
+  border: none;
+  outline: 0;
+  font-size: 20px;
+  background-color: white;
+  padding-left: 20px;
+  font-weight: 400;
+}
+.sideBar-container > button:hover {
+  background-color: rgb(230, 229, 229);
+  cursor: pointer;
+}
+
+.sidebar-icon {
+  color: black;
+
+  margin-bottom: -5px;
+  margin-right: 3px;
+}
+.logout-btn {
+  margin-top: 200px;
+}
+.patient-components {
+  width: 79%;
+  background-color: whitesmoke;
+}
+.overview-container {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  background-color: whitesmoke;
+}
+.patients {
+  padding-top: 10px;
+  background-color: white;
+  /* padding-left: 20px;s */
+}
+.patients > h3 {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+.patient-info {
+  width: 500px;
+  background-color: white;
+  height: 450px;
+  /* overflow-x: hidden; */
+  /* overflow-y: white; */
+  overflow-y: auto;
+}
+.name {
+  display: inline-flex;
+  /* background-color: red; */
+  justify-content: space-between;
+  width: 350px;
+}
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.patient-div {
+  width: 95%;
+  display: inline-flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  /* border-bottom: 1px var(--blue) solid; */
+  border-top: 1px rgb(229, 229, 229) solid;
+
+  /* margin-top: 2px; */
+}
+.patient-div > button {
+  background-color: white;
+  border: none;
+  padding-left: 3px;
+  padding-right: 3px;
+  outline: 0;
+}
+
+.icon {
+  font-size: 25px;
+  font-weight: 100;
+  color: rgb(67, 66, 66);
+}
+.bell-icon {
+  font-size: 20px;
+  color: black;
+}
+.icon:hover,
+.bell-icon:hover {
+  cursor: pointer;
+  color: var(--blue);
+}
+.patient-static-info {
+  background-color: white;
+  margin-top: 10px;
+  height: 520px;
+}
+.patient-static-info > h3 {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.patient-static-info > p {
+  color: grey;
+  padding-left: 20px;
+}
+.static-info-div {
+  margin-top: 20px;
+  /* padding-left: 20px; */
+  /* display: flex;
+  flex-direction: row; */
+}
+.details {
+  padding-left: 20px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px rgb(229, 229, 229) solid;
+}
+.tag-div {
+  width: 300px;
+  font-weight: 450;
+}
+.refill-container {
+  height: 510px;
+  background-color: white;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.refill-form {
+  width: 400px;
+  border: 1px rgb(216, 215, 215) solid;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.refill-form > p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.flex-box {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  padding-left: 50px;
+}
+.input-tag {
+  margin-top: 2px;
+}
+.input-value-div > select {
+  width: 120px;
+  border: none;
+  outline: 0;
+  text-align: center;
+  margin-top: 5px;
+  border: 1px rgb(209, 207, 207) solid;
+}
+
+.input-field-div {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+.input-field-div > input {
+  border: 1px rgb(209, 207, 207) solid;
+  outline: 0;
+  width: 70%;
+  text-align: center;
+  padding: 3px;
+  text-align: center;
+}
+.input-field-div > input:focus {
+  border: 1px var(--blue) solid;
+}
+.input-field-div > textarea {
+  width: 70%;
+  border: 1px rgb(209, 207, 207) solid;
+  outline: 0;
+  min-height: 60px;
+}
+.refill-form > button {
+  width: 50%;
+  background-color: var(--blue);
+  border: 2px var(--blue) solid;
+  color: white;
+  border-radius: 15px;
+  padding: 3px;
+  font-weight: 500;
+}
+.refill-form > button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: var(--blue);
+}
+.history-container {
+  background-color: white;
+  margin-top: 10px;
+  height: 510px;
+}
+.history-container > h3 {
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.refill-info-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 420px;
+}
+
+.refill-details {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px rgb(209, 207, 207) solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.refill-date {
+  width: 200px;
+  padding-left: 20px;
+}
+.medicine,
+.status {
+  width: 200px;
+}
+.ontime,
+.late {
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+}
+.late {
+  margin-left: 10px;
+  border-radius: 15px;
+  background-color: red;
+}
+.ontime {
+  background-color: lightgreen;
+  border-radius: 20px;
+}
+.view {
+  border: 2px var(--blue) solid;
+  padding: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: var(--blue);
+  color: white;
+  border-radius: 18px;
+}
+.view:hover {
+  cursor: pointer;
+  background-color: white;
+  color: var(--blue);
+}
+.add-patient-container {
+  background-color: white;
+  height: 510px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.patient-form > h3 {
+  padding-top: 10px;
+  text-align: center;
+}
+.patient-form > h4 {
+  color: grey;
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: 400;
+}
+.patient-form {
+  border: 1px rgb(209, 207, 207) solid;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+.form-row {
+  margin-top: 2px;
+}
+.form-row1 {
+  display: flex;
+  margin-top: 2px;
+}
+.first-name {
+  margin-right: 20px;
+}
+.first-name > input,
+.last-name > input {
+  border: 1px rgb(189, 188, 188) solid;
+  padding: 3px;
+  border-radius: 3px;
+  outline: 0;
+  width: 150px;
+}
+.first-name > input:focus,
+.last-name > input:focus,
+.form-value > input:focus {
+  border: 1px var(--blue) solid;
+}
+
+.form-value > input {
+  width: 98%;
+  border: 1px rgb(189, 188, 188) solid;
+  padding: 3px;
+  border-radius: 3px;
+  outline: 0;
+}
+.create-patient-btn {
+  border: 2px var(--blue) solid;
+  padding: 5px;
+  border-radius: 20px;
+  margin-top: 10px;
+  color: white;
+  font-weight: 500;
+  background-color: var(--blue);
+  padding-left: 15px;
+  padding-right: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.create-patient-btn:hover {
+  cursor: pointer;
+  background-color: white;
+  color: var(--blue);
+}

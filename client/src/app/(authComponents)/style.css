@@ -1,0 +1,180 @@
+:root {
+  --purple: rgb(82, 82, 252);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url("/hospital.jpg");
+  width: 100%;
+  background-size: cover;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  background-color: white;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  /* height: 520px; */
+  box-shadow: 1px 1px 0.5px 0.5px white;
+  /* text-align: center; */
+}
+
+.input-holder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+.login {
+  margin-top: 50px;
+}
+.div1 {
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.login-input,
+.signup-input {
+  width: 80%;
+  outline: 0;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px black solid;
+  color: black;
+  background-color: white;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.login-input:focus,
+.signup-input:focus {
+  width: 100%;
+  border-bottom: 2px var(--purple) solid;
+}
+.div2,
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  width: 60%;
+}
+.login-btn,
+.signup-btn {
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px var(--purple) solid;
+  padding: 8px;
+  font-weight: 600;
+  background-color: var(--purple);
+  color: white;
+  margin-top: 5px;
+  border-radius: 20px;
+  width: 50%;
+}
+
+.login-btn:hover,
+.signup-btn:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px var(--purple) solid;
+}
+.div2,
+.signup-container > label {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.login-icon {
+  color: var(--purple);
+  display: inline-block;
+  width: 100%;
+  font-weight: lighter;
+  font-size: 70px;
+}
+.div1 > h4 {
+  color: var(--purple);
+  font-weight: bolder;
+  font-size: larger;
+}
+.signup-link {
+  text-align: center;
+  margin-top: 10px;
+}
+.signup-link > span {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.loggedErrorMsg {
+  color: red;
+  text-align: center;
+  /* margin-left: 100px; */
+}
+#forgot-password-p:hover {
+  color: blue;
+  cursor: pointer;
+}
+.reset-container {
+  background-color: white;
+  width: 60%;
+  height: 400px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+.send-code-div,
+.phone,
+.otp-div,
+.reset-details {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  height: 200px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.input {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 8px;
+  text-align: center;
+  outline: 0;
+}
+.btn {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px;
+  border-radius: 18px;
+  border: none;
+  color: white;
+  background-color: var(--purple);
+  border: 2px var(--purple) solid;
+  margin-top: 5px;
+}
+.btn:hover {
+  background-color: white;
+  cursor: pointer;
+  color: var(--purple);
+}
+.reset-btn {
+  width: 150px;
+}
