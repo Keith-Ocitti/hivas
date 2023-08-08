@@ -5,7 +5,7 @@ import axios from "axios";
 export default function Refill({ doctor }) {
   // console.log(patient);
   // console.log(doctor);
-  let apiUrl = "https://9861-41-210-154-57.ngrok-free.app";
+  let apiUrl = "https://27dc-41-190-155-226.ngrok-free.app";
   const [refillData, setRefillData] = useState({
     patientCode: "",
     medicine: "",

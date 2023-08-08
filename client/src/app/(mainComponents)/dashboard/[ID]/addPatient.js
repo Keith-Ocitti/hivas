@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function AddNewPatient({ setPatient, dispatch }) {
-  let apiUrl = "https://9861-41-210-154-57.ngrok-free.app";
+  let apiUrl = "https://27dc-41-190-155-226.ngrok-free.app";
   const [newPatient, setNewPatient] = useState({
     firstName: "",
     lastName: "",

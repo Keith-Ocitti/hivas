@@ -217,8 +217,10 @@ const getPendingPatient = async (req, res) => {
 };
 // Add daily track record to the db
 const addTrackRecord = async (req, res) => {
-  // let phone = "0782612149";
-  const { phone, medicineStatus, callStatus, date } = req.body;
+  const { phone_number, medication_status, call_status, created_at } = req.body;
+
+  let phone = phone_number.replace("+256", "0");
+  // console.log(phone);
   let patients = await Patient.find({});
   let patient = patients.filter((patient) => patient.telephone === phone);
   if (!patient) {
@@ -237,9 +239,9 @@ const addTrackRecord = async (req, res) => {
         {
           id: 1,
           patientCode: patientCode,
-          medicineStatus: medicineStatus,
-          callStatus: callStatus,
-          date: date,
+          medicineStatus: medication_status,
+          callStatus: call_status,
+          date: new Date(created_at).toLocaleDateString(),
         },
       ],
     });
@@ -249,9 +251,9 @@ const addTrackRecord = async (req, res) => {
   patientRecord.dailyResponse.push({
     id: patientRecord.dailyResponse.length + 1,
     patientCode: patientCode,
-    medicineStatus: medicineStatus,
-    callStatus: callStatus,
-    date: date,
+    medicineStatus: medication_status,
+    callStatus: call_status,
+    date: new Date(created_at).toDateString(),
   });
 
   await patientRecord.save();
