@@ -5,7 +5,8 @@ import axios from "axios";
 export default function Refill({ doctor }) {
   // console.log(patient);
   // console.log(doctor);
-  let apiUrl = "https://27dc-41-190-155-226.ngrok-free.app";
+  let apiUrl = "https://f9e1-41-210-143-238.ngrok-free.app";
+
   const [refillData, setRefillData] = useState({
     patientCode: "",
     medicine: "",
@@ -16,6 +17,7 @@ export default function Refill({ doctor }) {
     issuingStaff: `${doctor.name} ${doctor.lastName}`,
     generalNotes: "",
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setRefillData((prev) => {
@@ -33,6 +35,7 @@ export default function Refill({ doctor }) {
       .then((res) => {
         console.log("success");
         setRefillReminder();
+        alert("Refill added successfully");
       })
       .catch((err) => console.log(err));
     // console.log(refillData);
@@ -41,7 +44,7 @@ export default function Refill({ doctor }) {
   const setRefillReminder = () => {
     let phone;
     let name;
-    const baseUrl = "http://localhost:5000/api/v1/specificPatient";
+    const baseUrl = "https://45fb-41-210-155-189.ngrok-free.app";
     let patientCode = refillData.patientCode;
     axios
       .post(baseUrl, { patientCode: patientCode })
@@ -158,7 +161,7 @@ export default function Refill({ doctor }) {
             />
           </div>
         </div>
-        <div className="input-field">
+        {/* <div className="input-field">
           <div className="input-tag">
             <p>Issuing Staff</p>
           </div>
@@ -171,7 +174,7 @@ export default function Refill({ doctor }) {
               name="issuingStaff"
             />
           </div>
-        </div>
+        </div> */}
         <div className="input-field">
           <div className="input-tag">
             <p>General Notes</p>

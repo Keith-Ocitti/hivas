@@ -217,16 +217,10 @@ const getPendingPatient = async (req, res) => {
 };
 // Add daily track record to the db
 const addTrackRecord = async (req, res) => {
-  const { phone_number, medication_status, call_status, created_at } = req.body;
+  const { phone_number, medication_status, call_status, created_at, code } =
+    req.body;
 
-  let phone = phone_number.replace("+256", "0");
-  // console.log(phone);
-  let patients = await Patient.find({});
-  let patient = patients.filter((patient) => patient.telephone === phone);
-  if (!patient) {
-    throw new BadRequestError(`No patient with telephone ${phone}`);
-  }
-  let patientCode = patient[0].uniqueCode;
+  let patientCode = code;
 
   if (!req.body === "") {
     throw new BadRequestError("Invalid entry");

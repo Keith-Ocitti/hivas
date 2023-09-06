@@ -6,7 +6,7 @@ import "../style.css";
 
 export default function ResetPassword() {
   const [newPassword, setNewPassword] = useState("");
-  const [doctorId, setDoctorId] = useState("");
+  const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [sendDiv, setSendDiv] = useState(true);
   const [phoneDiv, setPhoneDiv] = useState(false);
@@ -17,10 +17,10 @@ export default function ResetPassword() {
   // find doctor
   const findDoctor = () => {
     console.log("clicked");
-    let doctorId = document.getElementById("doctorId").value;
-    let baseUrl = "http://localhost:5000/api/v1/doctor";
+    let email = document.getElementById("email").value;
+    let baseUrl = "http://localhost:5000/api/v1/getDoctorReset";
     axios
-      .post(baseUrl, { doctorId: doctorId })
+      .post(baseUrl, { email: email })
       .then((res) => {
         console.log(res);
         console.log(res.data.phone);
@@ -30,7 +30,7 @@ export default function ResetPassword() {
       })
       .catch((err) => {
         console.log(err);
-        alert(`No user with ID ${doctorId} or check your internet connection`);
+        alert(`No user with ${email} or check your internet connection`);
       });
   };
   // send OTP Code
@@ -50,11 +50,11 @@ export default function ResetPassword() {
 
   // reset password
   const resetPass = () => {
-    let doctorId = document.getElementById("doctorId").value;
+    let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let baseUrl = "http://localhost:5000/api/v1/updateUser";
     axios
-      .post(baseUrl, { doctorId: doctorId, password: password })
+      .post(baseUrl, { email: email, password: password })
       .then((res) => {
         console.log(res);
         router.push("/");
@@ -67,8 +67,8 @@ export default function ResetPassword() {
     <div className="reset-container">
       {sendDiv ? (
         <div className="send-code-div">
-          <label>Enter Doctor ID</label>
-          <input type="text" id="doctorId" className="input" />
+          <label>Enter Your Email</label>
+          <input type="text" id="email" className="input" />
           <button onClick={findDoctor} className="btn">
             Send
           </button>
@@ -100,8 +100,8 @@ export default function ResetPassword() {
       )}
       {resetDiv ? (
         <div className="reset-details">
-          <label>Enter Doctor ID</label>
-          <input type="text" className="input" id="doctorId" />
+          <label>Enter Email</label>
+          <input type="text" className="input" id="email" />
           <label>Enter new password</label>
           <input type="password" className="input" id="password" />
           <button onClick={resetPass} className="btn reset-btn">

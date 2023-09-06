@@ -47,7 +47,7 @@ export default function RefillDetails({ specificRefillData }) {
             />
           </div>
         </div>
-        <div className="input-field">
+        {/* <div className="input-field">
           <div className="input-tag">
             <p>Issuing Staff</p>
           </div>
@@ -58,7 +58,7 @@ export default function RefillDetails({ specificRefillData }) {
               defaultValue={specificRefillData.issuingStaff}
             />
           </div>
-        </div>
+        </div> */}
         <div className="input-field">
           <div className="input-tag">
             <p>General Notes</p>

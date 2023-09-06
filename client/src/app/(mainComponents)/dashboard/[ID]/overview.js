@@ -3,10 +3,15 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Overview({ setPatient, dispatch }) {
-  let apiUrl = "https://27dc-41-190-155-226.ngrok-free.app";
+export default function Overview({ setRefillHistory, setPatient, dispatch }) {
+  // api to twilio
+  let apiUrl = "https://f9e1-41-210-143-238.ngrok-free.app";
+
+  // states
   const [recentPatients, setRecentPatients] = useState([]);
   const [pendingPatients, setPendingPatients] = useState([]);
+
+  // function to fetch recent patients
   useEffect(() => {
     const baseUrl = "http://localhost:5000/api/v1/patients";
     axios
@@ -20,6 +25,35 @@ export default function Overview({ setPatient, dispatch }) {
       });
   }, []);
 
+  // function to search a patient
+  const searchPatient = (code) => {
+    let baseUrl = "http://localhost:5000/api/v1/previousRefills";
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "",
+      },
+    };
+    axios
+      .post(baseUrl, { id: code }, config)
+      .then((res) => {
+        let refillArray = res.data.previousRefills;
+        if (refillArray.length > 0) {
+          setRefillHistory(res.data.previousRefills[0].refill);
+        } else {
+          setRefillHistory([]);
+        }
+      })
+      .catch((err) => console.log(err));
+
+    baseUrl = "http://localhost:5000/api/v1/getDailyRecords";
+    axios
+      .post(baseUrl, { patientCode: code }, config)
+      .then((res) => setDailyRecord(res.data))
+      .catch((err) => console.log(err));
+  };
+
+  // function to get pending Patients
   useEffect(() => {
     const baseUrl = "http://localhost:5000/api/v1/pendingPatients";
     axios
@@ -35,6 +69,8 @@ export default function Overview({ setPatient, dispatch }) {
       (patient) => patient.uniqueCode === code
     );
     setPatient(patient[0]);
+    searchPatient(code);
+
     dispatch({ type: "patient" });
 
     console.log(patient);
@@ -44,11 +80,13 @@ export default function Overview({ setPatient, dispatch }) {
       (patient) => patient.uniqueCode === code
     );
     setPatient(patient[0]);
+    searchPatient(code);
     dispatch({ type: "patient" });
 
     console.log(patient);
   };
 
+  // function to loop through recent patient state and display them
   const displayRecentPatients = (patientObj) => {
     return patientObj.map((patient) => {
       return (
@@ -64,6 +102,8 @@ export default function Overview({ setPatient, dispatch }) {
       );
     });
   };
+
+  // function to loop through pending patient state and display them
   const displayPendingPatients = (patientObj) => {
     return patientObj.map((patient) => {
       return (
@@ -91,7 +131,7 @@ export default function Overview({ setPatient, dispatch }) {
   // send sms
   const sendSMS = (phone, name) => {
     let data = {
-      phone_number: "0773431724",
+      phone_number: phone,
       name: name,
     };
     const baseUrl = `${apiUrl}/kimra_api/send_instant_refill_reminder`;
@@ -100,11 +140,12 @@ export default function Overview({ setPatient, dispatch }) {
       .then((res) => console.log("success"))
       .catch((err) => console.log(err));
   };
+
   // to call patient
   const callPatient = (phone, name) => {
     let data = {
-      phone_number: "0773431724",
-      message: `Hello ${name}, Kindly go and pick up your medications from the hospital. Thank you`,
+      phone_number: phone,
+      message: `Hello, Kindly go and pick up your medications from the hospital. Thank you`,
     };
     const baseUrl = `${apiUrl}/kimra_api/make_direct_call`;
     axios
@@ -112,6 +153,7 @@ export default function Overview({ setPatient, dispatch }) {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
+
   return (
     <div className="overview-container">
       <div className="patients">
@@ -123,7 +165,7 @@ export default function Overview({ setPatient, dispatch }) {
         </div>
       </div>
       <div className="patients">
-        <h3>Pending Patients</h3>
+        <h3>Delayed Patients</h3>
         <div className="patient-info">
           {pendingPatients
             ? displayPendingPatients(pendingPatients)

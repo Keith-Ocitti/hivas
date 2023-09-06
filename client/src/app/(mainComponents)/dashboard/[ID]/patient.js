@@ -1,7 +1,9 @@
 export default function Patient({ patient }) {
+  // calculate patients age
   let date = patient.dateOfBirth.split("-")[0];
   let CurrentDate = new Date().toLocaleDateString().split("/")[2];
   let age = Number(CurrentDate) - Number(date);
+
   return (
     <div className="patient-static-info">
       <h3>Patient information</h3>

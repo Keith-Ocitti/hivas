@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 export default function Login({ handleLogin }) {
   const router = useRouter();
   const [loggedIn, setLoggedIn] = useState("");
-  const [loginData, setLoginData] = useState({ doctorId: "", password: "" });
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
   const handleLoginChange = (event) => {
     const { name, value } = event.target;
     setLoginData((prevFormData) => {
@@ -32,7 +32,7 @@ export default function Login({ handleLogin }) {
           sessionStorage.setItem("name", response.data.name);
           sessionStorage.setItem("position", response.data.position);
           sessionStorage.setItem("loggedIn", true);
-          router.push(`/dashboard/${loginData.doctorId}`);
+          router.push(`/dashboard/${response.data.doctorId}`);
         }
       })
       .catch((err) => {
@@ -51,15 +51,15 @@ export default function Login({ handleLogin }) {
             </div>
             <div className="div2">
               <h5 className="loggedErrorMsg">{loggedIn ? loggedIn : ""}</h5>
-              <label>Doctor's ID</label>
+              <label>Email</label>
               <input
                 type="text"
-                placeholder="Doctor's ID"
+                placeholder="email"
                 className="login-input"
                 required
-                value={loginData.doctorId}
+                value={loginData.email}
                 onChange={handleLoginChange}
-                name="doctorId"
+                name="email"
               />
               <br />
               <label>Password</label>

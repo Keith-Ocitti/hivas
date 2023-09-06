@@ -29,12 +29,17 @@ const StaffSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter Doctor ID"],
     minlength: 6,
-    // unique: [true, "id already exists"],
+    unique: [true, "id already exists"],
   },
   phone: {
     type: String,
     required: [true, "Please enter contact"],
     unique: [true, "contact already exists"],
+  },
+  email: {
+    type: String,
+    required: [true, "Please enter email"],
+    unique: [true, "Email already exists"],
   },
 });
 

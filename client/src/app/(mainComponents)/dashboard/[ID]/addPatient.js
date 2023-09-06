@@ -3,7 +3,9 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function AddNewPatient({ setPatient, dispatch }) {
-  let apiUrl = "https://27dc-41-190-155-226.ngrok-free.app";
+  let apiUrl = "https://f9e1-41-210-143-238.ngrok-free.app";
+  // const [pcode, setPCode] = useState("");
+  let patientCode;
   const [newPatient, setNewPatient] = useState({
     firstName: "",
     lastName: "",
@@ -30,11 +32,15 @@ export default function AddNewPatient({ setPatient, dispatch }) {
     let send_time = newPatient.drugTime;
     let phone = newPatient.telephone;
     let name = newPatient.firstName;
+    let code = patientCode;
+    console.log({ code: code });
     let data = {
       send_time: send_time,
       phone_number: phone,
       name: name,
+      code: code,
     };
+    console.log(data);
     axios
       .post(baseUrl, data)
       .then((res) => {
@@ -49,6 +55,7 @@ export default function AddNewPatient({ setPatient, dispatch }) {
       .post(baseUrl, { ...newPatient })
       .then((res) => {
         console.log("success");
+        patientCode = res.data.patient.uniqueCode;
         alert(
           `Patient with code ${res.data.patient.uniqueCode} successfully created`
         );

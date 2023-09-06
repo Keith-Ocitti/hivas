@@ -134,7 +134,13 @@ export default function Dashboard() {
       dailyRecord,
     } = display;
     if (overviewTab) {
-      return <Overview setPatient={setPatient} dispatch={dispatch} />;
+      return (
+        <Overview
+          setPatient={setPatient}
+          dispatch={dispatch}
+          setRefillHistory={setRefillHistory}
+        />
+      );
     } else if (patientTab) {
       return <Patient patient={patient} />;
     } else if (refillTab) {

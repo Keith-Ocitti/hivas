@@ -15,6 +15,7 @@ export default function Signup({ handleLogin }) {
     hospital: "",
     position: "",
     password: "",
+    email: "",
   });
 
   const handleSignUpChange = (event) => {
@@ -68,6 +69,15 @@ export default function Signup({ handleLogin }) {
                 value={signUpData.lastName}
                 onChange={handleSignUpChange}
                 name="lastName"
+              />
+              <label>Email</label>
+              <input
+                type="text"
+                className="signup-input"
+                required
+                value={signUpData.email}
+                onChange={handleSignUpChange}
+                name="email"
               />
               <label>Phone</label>
               <input

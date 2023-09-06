@@ -22,6 +22,7 @@ export default function Header({
   let date = new Date().toDateString();
   // const [doctor, setDoctor] = useState("");
 
+  // manage session
   useEffect(() => {
     const baseUrl = "http://localhost:5000/api/v1/doctor";
     axios
@@ -37,6 +38,7 @@ export default function Header({
       });
   }, []);
 
+  // function to search a patient
   const searchPatient = () => {
     let code = document.getElementById("patientCode").value;
     let baseUrl = "http://localhost:5000/api/v1/previousRefills";
